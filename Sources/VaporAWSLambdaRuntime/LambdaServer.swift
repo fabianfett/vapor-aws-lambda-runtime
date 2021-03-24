@@ -91,11 +91,12 @@ public class LambdaServer: Server {
         }
     }
 
-    private let application: Application
-    private let responder: Responder
-    private let configuration: Configuration
-    private let eventLoop: EventLoop
-    private var lambdaLifecycle: Lambda.Lifecycle
+    let application: Application
+    let responder: Responder
+    let configuration: Configuration
+    let eventLoop: EventLoop
+    let lambdaHandler: ByteBufferLambdaHandler
+    let lambdaLifecycle: Lambda.Lifecycle
 
     init(application: Application,
          responder: Responder,
@@ -123,6 +124,7 @@ public class LambdaServer: Server {
         ) {
             $0.eventLoop.makeSucceededFuture(handler)
         }
+        self.lambdaHandler = handler
     }
 
     public func start(hostname _: String?, port _: Int?) throws {
@@ -142,9 +144,6 @@ public class LambdaServer: Server {
     }
 
     public func shutdown() {
-        // this should only be executed after someone has called `app.shutdown()`
-        // on lambda the ones calling should always be us!
-        // If we have called shutdown, the lambda server already is shutdown.
-        // That means, we have nothing to do here.
+        self.lambdaLifecycle.shutdown()
     }
 }
