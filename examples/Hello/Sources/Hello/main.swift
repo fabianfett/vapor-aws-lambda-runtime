@@ -19,6 +19,9 @@ app.post("hello") { req -> Hello in
     let name = try req.content.decode(Name.self)
     return Hello(hello: name.name)
 }
-
+app.storage[Application.Lambda.Server.ConfigurationKey.self] = .init(apiService: .applicationLoadBalancer,
+    logger: app.logger)
 app.servers.use(.lambda)
 try app.run()
+
+

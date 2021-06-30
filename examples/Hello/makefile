@@ -11,7 +11,7 @@ build_lambda:
 			$(SWIFT_DOCKER_IMAGE) \
 			swift build --product Hello -c release
 
-package_lambda: build_lambda
+package_lambda:
 	docker run \
 			--rm \
 			--volume "$(shell pwd)/../..:/src" \

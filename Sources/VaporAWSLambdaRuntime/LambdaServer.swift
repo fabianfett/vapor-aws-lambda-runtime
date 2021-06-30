@@ -66,8 +66,8 @@ public extension Application.Lambda {
             }
         }
 
-        struct ConfigurationKey: StorageKey {
-            typealias Value = LambdaServer.Configuration
+        public struct ConfigurationKey: StorageKey {
+            public typealias Value = LambdaServer.Configuration
         }
     }
 }
@@ -79,7 +79,7 @@ public class LambdaServer: Server {
         public enum RequestSource {
             case apiGateway
             case apiGatewayV2
-//      case applicationLoadBalancer // not in this release
+            case applicationLoadBalancer
         }
 
         var requestSource: RequestSource
@@ -115,6 +115,8 @@ public class LambdaServer: Server {
             handler = APIGatewayHandler(application: application, responder: responder)
         case .apiGatewayV2:
             handler = APIGatewayV2Handler(application: application, responder: responder)
+        case .applicationLoadBalancer:
+            handler = ALBHandler(application: application, responder: responder)
         }
 
         self.lambdaLifecycle = Lambda.Lifecycle(

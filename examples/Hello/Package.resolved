@@ -39,11 +39,11 @@
       },
       {
         "package": "swift-aws-lambda-runtime",
-        "repositoryURL": "https://github.com/swift-server/swift-aws-lambda-runtime.git",
+        "repositoryURL": "https://github.com/skelpo/swift-aws-lambda-runtime.git",
         "state": {
           "branch": null,
-          "revision": "2bac89639fffd7b1197ab597473a4d10c459a230",
-          "version": "0.2.0"
+          "revision": "eb8924dde415c8d9daca242556c23b84b2ef3a5d",
+          "version": "0.4.0"
         }
       },
       {
@@ -56,21 +56,21 @@
         }
       },
       {
-        "package": "swift-base64-kit",
-        "repositoryURL": "https://github.com/fabianfett/swift-base64-kit",
-        "state": {
-          "branch": null,
-          "revision": "3ffa48a7047fc9ac6581cd53ab1df29466d8f13b",
-          "version": "0.2.0"
-        }
-      },
-      {
         "package": "swift-crypto",
         "repositoryURL": "https://github.com/apple/swift-crypto.git",
         "state": {
           "branch": null,
           "revision": "9b9d1868601a199334da5d14f4ab2d37d4f8d0c5",
           "version": "1.0.2"
+        }
+      },
+      {
+        "package": "swift-extras-base64",
+        "repositoryURL": "https://github.com/swift-extras/swift-extras-base64",
+        "state": {
+          "branch": null,
+          "revision": "bf6706e1811e746cb204deaa921d8c7b4d0509e2",
+          "version": "0.4.0"
         }
       },
       {
